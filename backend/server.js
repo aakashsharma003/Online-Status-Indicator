@@ -14,11 +14,11 @@ const User = require("./models/User");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: "https://online-status-indicator.vercel.app/" }));
+app.use(cors({ origin: "*" }));
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "https://online-status-indicator.vercel.app/",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
