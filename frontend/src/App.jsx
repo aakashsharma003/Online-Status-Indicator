@@ -15,7 +15,7 @@ import ListItemText from "@mui/material/ListItemText";
 import CircularProgress from "@mui/material/CircularProgress";
 import "./App.css";
 
-const ENDPOINT = "http://localhost:4000";
+const Server = "https://online-status-indicator.onrender.com";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -36,7 +36,7 @@ function App() {
 
   useEffect(() => {
     if (userId && token) {
-      const socket = io(ENDPOINT);
+      const socket = io(Server);
 
       socket.emit("user-online", token);
 
@@ -74,7 +74,7 @@ function App() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(`${ENDPOINT}/login`, {
+      const response = await axios.post(`${Server}/login`, {
         username,
         avatar,
       });
